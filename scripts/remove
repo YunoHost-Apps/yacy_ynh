@@ -1,0 +1,10 @@
+#!/bin/bash
+
+db_user=yacy
+db_name=yacy
+root_pwd=$(sudo cat /etc/yunohost/mysql)
+domain=$(sudo yunohost app setting yacy domain)
+
+mysql -u root -p$root_pwd -e "DROP DATABASE $db_name ; DROP USER $db_user ;"
+sudo rm -rf /var/www/yacy
+sudo rm -f /etc/nginx/conf.d/$domain.d/yacy.conf
