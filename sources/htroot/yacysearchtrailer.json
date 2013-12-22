@@ -1,0 +1,94 @@
+    "navigation": [#(nav-filetypes)#::
+    {
+      "facetname": "filetypes",
+      "displayname": "Filetype",
+      "type": "String",
+      "min": "0",
+      "max": "0",
+      "mean": "0",
+      "elements": [
+#{element}#
+        {"name": "#[name]#", "count": "#[count]#", "modifier": "#[modifier]#", "url": "#[url]#"}#(nl)#::,#(/nl)#
+#{/element}#
+      ]
+    },#(/nav-filetypes)##(nav-protocols)#::
+    {
+      "facetname": "protocols",
+      "displayname": "Protocol",
+      "type": "String",
+      "min": "0",
+      "max": "0",
+      "mean": "0",
+      "elements": [
+#{element}#
+        {"name": "#[name]#", "count": "#[count]#", "modifier": "#[modifier]#", "url": "#[url]#"}#(nl)#::,#(/nl)#
+#{/element}#
+      ]
+    },#(/nav-protocols)##(nav-domains)#::
+    {
+      "facetname": "domains",
+      "displayname": "Domains",
+      "type": "String",
+      "min": "0",
+      "max": "0",
+      "mean": "0",
+      "elements": [
+#{element}#
+        {"name": "#[name]#", "count": "#[count]#", "modifier": "#[modifier]#", "url": "#[url]#"}#(nl)#::,#(/nl)#
+#{/element}#
+      ]
+    },#(/nav-domains)##(nav-namespace)#::
+    {
+      "facetname": "namespace",
+      "displayname": "Name Space",
+      "type": "String",
+      "min": "0",
+      "max": "0",
+      "mean": "0",
+      "elements": [
+#{element}#
+        {"name": "#[name]#", "count": "#[count]#", "modifier": "#[modifier]#", "url": "#[url]#"}#(nl)#::,#(/nl)#
+#{/element}#
+      ]
+    },#(/nav-namespace)##(nav-authors)#::
+    {
+      "facetname": "authors",
+      "displayname": "Authors",
+      "type": "String",
+      "min": "0",
+      "max": "0",
+      "mean": "0",
+      "elements": [
+#{element}#
+        {"name": "#[name]#", "count": "#[count]#", "modifier": "#[modifier]#", "url": "#[url]#"}#(nl)#::,#(/nl)#
+#{/element}#
+      ]
+    },#(/nav-authors)##{nav-vocabulary}#
+    {
+      "facetname": "#[navname]#",
+      "displayname": "#[navname]#",
+      "type": "String",
+      "min": "0",
+      "max": "0",
+      "mean": "0",
+      "elements": [
+#{element}#
+        {"name": "#[name]#", "count": "#[count]#", "modifier": "#[modifier]#", "url": "#[url]#"}#(nl)#::,#(/nl)#
+#{/element}#
+      ]
+    },#{/nav-vocabulary}##(nav-topics)#::
+    {
+      "facetname": "topics",
+      "displayname": "Topics",
+      "type": "String",
+      "min": "0",
+      "max": "0",
+      "mean": "0",
+      "elements": [
+#{element}#
+        {"name": "#[name]#", "count": "#[count]#", "modifier": "#[modifier]#", "url": "#[url]#"}#(nl)#::,#(/nl)#
+#{/element}#
+      ]
+    }#(/nav-topics)#
+    ],
+    "totalResults": "#[num-results_totalcount]#"
