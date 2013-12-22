@@ -23,7 +23,7 @@
             {
                 "name": "path",
                 "ask": {
-                    "en": "Choose a path for Roundcube"
+                    "en": "Choose a path for YaCy"
                 },
                 "example": "/yacy",
                 "default": "/yacy"
