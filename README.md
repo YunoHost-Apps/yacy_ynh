@@ -1,4 +1,7 @@
-yacy_ynh
-========
+YaCy for YunoHost
+----------------------
 
-Free and decentrelized search engine for YunoHost
+http://yacy.net
+
+
+
