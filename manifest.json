@@ -1,0 +1,34 @@
+{
+    "name": "YaCy",
+    "id": "yacy",
+    "description": {
+        "en": "Free and decentrelized search engine",
+        "fr": "Moteur de recherche libre et décentralisé"
+    },
+    "developer": {
+        "name": "Moul",
+        "email": "moul@moul.be",
+        "url": "https://moul.be/blog"
+    },
+    "multi_instance": "true",
+    "arguments": {
+        "install" : [
+            {
+                "name": "domain",
+                "ask": {
+                    "en": "Choose a domain for YaCy"
+                },
+                "example": "domain.org"
+            },
+            {
+                "name": "path",
+                "ask": {
+                    "en": "Choose a path for Roundcube"
+                },
+                "example": "/yacy",
+                "default": "/yacy"
+            }
+        ]
+
+    }
+}
