@@ -29,7 +29,7 @@ sed -i "s@ALIASTOCHANGE@$final_path/@g" ../conf/nginx.conf
 sudo cp ../conf/nginx.conf /etc/nginx/conf.d/$domain.d/yacy.conf
 
 # Forward port 80 to 8090
-iptables -t nat -A PREROUTING -p tcp --dport 80 -j REDIRECT --to-port 8090
+#iptables -t nat -A PREROUTING -p tcp --dport 80 -j REDIRECT --to-port 8090
 
 # Reload Nginx and regenerate SSOwat conf
 sudo service nginx reload
