@@ -1,4 +1,4 @@
-YaCy for YunoHost
+YaCy package for YunoHost
 ----------------------
 
 http://yacy.net
