@@ -1,3 +1,5 @@
+#!/bin/bash 
+
 # Retrieve arguments
 domain=$1
 path=$2
@@ -8,25 +10,24 @@ if [[ ! $? -eq 0 ]]; then
     exit 1
 fi
 
-# Generate random DES key & password
-deskey=$(dd if=/dev/urandom bs=1 count=200 2> /dev/null | tr -c -d '[A-Za-z0-9]' | sed -n 's/\(.\{24\}\).*/\1/p')
-db_pwd=$(dd if=/dev/urandom bs=1 count=200 2> /dev/null | tr -c -d '[A-Za-z0-9]' | sed -n 's/\(.\{24\}\).*/\1/p')
+# Check port availability
+sudo yunohost app checkport 8090
+if [[ ! $? -eq 0 ]]; then
+  exit 1
+fi
 
-# Use 'yacy' as database name and user
-db_user=yacy
+# Install official Debian package
 
-# Copy files to the right place
-final_path=/var/www/yacy
-sudo mkdir -p $final_path
-sudo cp -a ../sources/* $final_path
+sed -f /etc/apt/sources.list . > deb http://debian.yacy.net ./
+
+gpg --keyserver pgpkeys.mit.edu --recv-key 1F968B3903D886E7
+gpg -a --export 1F968B3903D886E7 | sudo apt-key add -
+
+sudo apt-get update
+sudo apt-get install yacy -y -qq
 
 # Set permissions to yacy directory
 sudo chown -R www-data: $final_path
-
-# Modify Nginx configuration file and copy it to Nginx conf directory
-sed -i "s@PATHTOCHANGE@$path@g" ../conf/nginx.conf
-sed -i "s@ALIASTOCHANGE@$final_path/@g" ../conf/nginx.conf
-sudo cp ../conf/nginx.conf /etc/nginx/conf.d/$domain.d/yacy.conf
 
 # Forward port 80 to 8090
 #iptables -t nat -A PREROUTING -p tcp --dport 80 -j REDIRECT --to-port 8090
