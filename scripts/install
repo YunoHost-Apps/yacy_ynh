@@ -18,7 +18,7 @@ fi
 
 # Install official Debian package
 
-echo "deb http://debian.yacy.net ./" | sudo tee /etc/apt/sources.list
+echo "deb http://debian.yacy.net ./" | sudo tee /etc/apt/sources.list.d/yacy.list
 
 gpg --keyserver pgpkeys.mit.edu --recv-key 1F968B3903D886E7
 gpg -a --export 1F968B3903D886E7 | sudo apt-key add -
@@ -26,11 +26,12 @@ gpg -a --export 1F968B3903D886E7 | sudo apt-key add -
 sudo apt-get update
 sudo apt-get install yacy -y -qq
 
-# Set permissions to yacy directory
-sudo chown -R www-data: $final_path
+# Modify Nginx and YaCy configuration file, then copy them to the right place
+sed -i "s@PATHTOCHANGE@$path@g" ../conf/nginx.conf
+sudo cp ../conf/nginx.conf /etc/nginx/conf.d/$domain.d/yacy.conf
 
-# Forward port 80 to 8090
-#iptables -t nat -A PREROUTING -p tcp --dport 80 -j REDIRECT --to-port 8090
+# Ajouter le service YaCy au monitoring YunoHost
+sudo yunohost service add yacy --log /var/log/yacy/yacy00.log
 
 # Reload Nginx and regenerate SSOwat conf
 sudo service nginx reload
