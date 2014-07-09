@@ -18,7 +18,7 @@ fi
 
 # Install official Debian package
 
-sudo sed -f /etc/apt/sources.list . > deb http://debian.yacy.net ./
+echo "deb http://debian.yacy.net ./" | sudo tee /etc/apt/sources.list
 
 gpg --keyserver pgpkeys.mit.edu --recv-key 1F968B3903D886E7
 gpg -a --export 1F968B3903D886E7 | sudo apt-key add -
