@@ -4,6 +4,10 @@
     "description": {
         "en": "Free and decentrelized search engine",
         "fr": "Moteur de recherche libre et décentralisé"
+        {
+            categories:[
+                search-engine]
+        }
     },
     "developer": {
         "name": "Moul",
@@ -17,6 +21,7 @@
                 "name": "domain",
                 "ask": {
                     "en": "Choose a domain for YaCy"
+                    "fr": "Choisi un nom de domaine pour YaCy"
                 },
                 "example": "domain.org"
             },
@@ -24,6 +29,7 @@
                 "name": "path",
                 "ask": {
                     "en": "Choose a path for YaCy"
+                    "fr": "Choisi une adresse pour YaCy"
                 },
                 "example": "/yacy",
                 "default": "/yacy"
