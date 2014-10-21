@@ -16,14 +16,16 @@
             {
                 "name": "domain",
                 "ask": {
-                    "en": "Choose a domain for YaCy"
+                    "en": "Choose a domain for YaCy",
+                    "fr": "Choisisez un nom de domaine sur lequel installer YaCy"
                 },
                 "example": "domain.org"
             },
             {
                 "name": "path",
                 "ask": {
-                    "en": "Choose a path for YaCy"
+                    "en": "Choose a path for YaCy",
+                    "fr": "Choisisez une adresse sur laquelle installer YaCy"
                 },
                 "example": "/yacy",
                 "default": "/yacy"

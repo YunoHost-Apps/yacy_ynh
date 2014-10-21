@@ -1,8 +1,10 @@
 YaCy package for YunoHost
 ----------------------
 
-* http://yacy.net
+* [http://yacy.net](YaCy web site)
 
-* https://yunohost.org/#/
+* [https://yunohost.org/](YunoHost web site]
+
+* Package not ready
 
 

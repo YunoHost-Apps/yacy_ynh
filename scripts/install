@@ -16,8 +16,7 @@ if [[ ! $? -eq 0 ]]; then
   exit 1
 fi
 
-# Install official Debian package
-
+# Install Debian official package
 echo "deb http://debian.yacy.net ./" | sudo tee /etc/apt/sources.list.d/yacy.list
 
 gpg --keyserver pgpkeys.mit.edu --recv-key 1F968B3903D886E7
@@ -26,11 +25,14 @@ gpg -a --export 1F968B3903D886E7 | sudo apt-key add -
 sudo apt-get update
 sudo apt-get install yacy -y -qq
 
-# Modify Nginx and YaCy configuration file, then copy them to the right place
-sed -i "s@PATHTOCHANGE@$path@g" ../conf/nginx.conf
-sudo cp ../conf/nginx.conf /etc/nginx/conf.d/$domain.d/yacy.conf
+# Port forwarding
+echo 'iptables -t nat -A PREROUTING -p tcp --dport 80 -j REDIRECT --to-port 8090' > /etc/rc.local 
 
-# Ajouter le service YaCy au monitoring YunoHost
+# Modify Nginx and YaCy configuration file, then copy them to the right place
+#sed -i "s@PATHTOCHANGE@$path@g" ../conf/nginx.conf
+#sudo cp ../conf/nginx.conf /etc/nginx/conf.d/$domain.d/yacy.conf
+
+# Add YaCy service to the YunoHost monitoring
 sudo yunohost service add yacy --log /var/log/yacy/yacy00.log
 
 # Reload Nginx and regenerate SSOwat conf
