@@ -4,10 +4,10 @@
     "description": {
         "en": "Free and decentrelized search engine",
         "fr": "Moteur de recherche libre et décentralisé"
-        {
+       */ {
             categories:[
                 search-engine]
-        }
+        }/*
     },
     "developer": {
         "name": "Moul",
