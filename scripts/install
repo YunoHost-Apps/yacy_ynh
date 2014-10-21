@@ -25,18 +25,16 @@ gpg -a --export 1F968B3903D886E7 | sudo apt-key add -
 sudo apt-get update
 sudo apt-get install yacy -y -qq
 
-# Port forwarding
-echo 'iptables -t nat -A PREROUTING -p tcp --dport 80 -j REDIRECT --to-port 8090' > /etc/rc.local 
-
 # Modify Nginx and YaCy configuration file, then copy them to the right place
-#sed -i "s@PATHTOCHANGE@$path@g" ../conf/nginx.conf
-#sudo cp ../conf/nginx.conf /etc/nginx/conf.d/$domain.d/yacy.conf
+sed -i "s@PATHTOCHANGE@$path@g" ../conf/nginx.conf
+sudo cp ../conf/nginx.conf /etc/nginx/conf.d/$domain.d/yacy.conf
 
 # Add YaCy service to the YunoHost monitoring
 sudo yunohost service add yacy --log /var/log/yacy/yacy00.log
 
 #Relancer le service YaCy avec la nouvelle configuration
-sudo yunohost service yacy restart
+sudo yunohost service yacy stop
+sudo yunohost service yacy start
 
 # Reload Nginx and regenerate SSOwat conf
 sudo service nginx reload
