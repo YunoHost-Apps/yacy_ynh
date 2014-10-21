@@ -1,6 +1,10 @@
 #!/bin/bash
 
-db_user=yacy
-db_name=yacy
-root_pwd=$(sudo cat /etc/yunohost/mysql)
-domain=$(sudo yunohost app setting yacy domain)
+# Remove Debian official paquage
+sudo apt-get remove yacy
+
+# Remove YaCy service to the YunoHost monitoring
+sudo yunohost service remove yacy --log /var/log/yacy/yacy00.log
+
+sudo service nginx reload
+sudo yunohost app ssowatconf 
