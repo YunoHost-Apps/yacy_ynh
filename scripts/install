@@ -35,6 +35,9 @@ echo 'iptables -t nat -A PREROUTING -p tcp --dport 80 -j REDIRECT --to-port 8090
 # Add YaCy service to the YunoHost monitoring
 sudo yunohost service add yacy --log /var/log/yacy/yacy00.log
 
+#Relancer le service YaCy avec la nouvelle configuration
+sudo yunohost service yacy restart
+
 # Reload Nginx and regenerate SSOwat conf
 sudo service nginx reload
 sudo yunohost app ssowatconf

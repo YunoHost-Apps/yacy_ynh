@@ -4,11 +4,15 @@
     "description": {
         "en": "Free and decentrelized search engine",
         "fr": "Moteur de recherche libre et décentralisé"
+        {
+            categories:[
+                search-engine]
+        }
     },
     "developer": {
         "name": "Moul",
         "email": "moul@moul.re",
-        "url": 
+        "url": "yunohost.org"
     },
     "multi_instance": "true",
     "arguments": {
@@ -16,16 +20,26 @@
             {
                 "name": "domain",
                 "ask": {
+<<<<<<< HEAD
                     "en": "Choose a domain for YaCy",
                     "fr": "Choisisez un nom de domaine sur lequel installer YaCy"
+=======
+                    "en": "Choose a domain for YaCy"
+                    "fr": "Choisi un nom de domaine pour YaCy"
+>>>>>>> 26d191cc215b468d1303bc3f4f3b54262d1ede09
                 },
                 "example": "domain.org"
             },
             {
                 "name": "path",
                 "ask": {
+<<<<<<< HEAD
                     "en": "Choose a path for YaCy",
                     "fr": "Choisisez une adresse sur laquelle installer YaCy"
+=======
+                    "en": "Choose a path for YaCy"
+                    "fr": "Choisi une adresse pour YaCy"
+>>>>>>> 26d191cc215b468d1303bc3f4f3b54262d1ede09
                 },
                 "example": "/yacy",
                 "default": "/yacy"
