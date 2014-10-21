@@ -1,5 +1,6 @@
 #!/bin/bash
 
+<<<<<<< HEAD
 # Remove Debian official paquage
 sudo apt-get remove yacy
 
@@ -8,3 +9,14 @@ sudo yunohost service remove yacy --log /var/log/yacy/yacy00.log
 
 sudo service nginx reload
 sudo yunohost app ssowatconf 
+=======
+#Remove official Debian package
+sudo apt-get remove yacy -y -qq
+
+#Remove YaCy service to YunoHost monitoring
+sudo yunohost service remove yacy
+
+#Reload Nginx and regenerate SSOwat conf
+sudo service nginx reload
+sudo yunohost app ssowatconf
+>>>>>>> 26d191cc215b468d1303bc3f4f3b54262d1ede09
