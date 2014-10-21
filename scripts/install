@@ -33,8 +33,8 @@ sudo cp ../conf/nginx.conf /etc/nginx/conf.d/$domain.d/yacy.conf
 sudo yunohost service add yacy --log /var/log/yacy/yacy00.log
 
 #Relancer le service YaCy avec la nouvelle configuration
-sudo yunohost service yacy stop
-sudo yunohost service yacy start
+sudo yunohost service stop yacy
+sudo yunohost service start yacy
 
 # Reload Nginx and regenerate SSOwat conf
 sudo service nginx reload
