@@ -1,0 +1,14 @@
+[Unit]
+Description=YaCy search server
+After=network.target
+
+[Service]
+Type=forking
+User=__APP__
+Group=__APP__
+WorkingDirectory=__FINALPATH__/
+ExecStart=__FINALPATH__/startYACY.sh --startup __DATADIR__/
+ExecStop=__FINALPATH__/stopYACY.sh
+
+[Install]
+WantedBy=multi-user.target

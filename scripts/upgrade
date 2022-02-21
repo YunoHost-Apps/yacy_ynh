@@ -1,36 +1,156 @@
 #!/bin/bash
 
-domain=$(sudo yunohost app setting yacy domain)
-path=$(sudo yunohost app setting yacy path)
+#=================================================
+# GENERIC START
+#=================================================
+# IMPORT GENERIC HELPERS
+#=================================================
 
-deskey=$(dd if=/dev/urandom bs=1 count=200 2> /dev/null | tr -c -d '[A-Za-z0-9]' | sed -n 's/\(.\{24\}\).*/\1/p')
-db_user=yacy
-db_pwd=$(sudo yunohost app setting yacy mysqlpwd)
-db_file=../sources/SQL/mysql/$(ls -tr ../sources/SQL/mysql | head -1)
+source _common.sh
+source /usr/share/yunohost/helpers
 
-mysql -u $db_user -p$db_pwd $db_user < $db_file
+#=================================================
+# LOAD SETTINGS
+#=================================================
+ynh_script_progression --message="Loading installation settings..."
 
-final_path=/var/www/yacy
-sudo mkdir -p $final_path
-sudo cp -a ../sources/* $final_path
-sudo cp ../conf/main.inc.php $final_path/config/
-sudo cp ../conf/db.inc.php $final_path/config/
-sudo mv $final_path/plugins/managesieve/config.inc.php.dist $final_path/plugins/managesieve/config.inc.php
+app=$YNH_APP_INSTANCE_NAME
 
-sudo sed -i "s/rcmail-ynhDESkeyTOchange/$deskey/g" $final_path/config/main.inc.php
-sudo sed -i "s/yunouser/$db_user/g" $final_path/config/db.inc.php
-sudo sed -i "s/yunopass/$db_pwd/g" $final_path/config/db.inc.php
-sudo sed -i "s/yunobase/$db_user/g" $final_path/config/db.inc.php
+domain=$(ynh_app_setting_get --app=$app --key=domain)
+path_url=$(ynh_app_setting_get --app=$app --key=path)
+admin=$(ynh_app_setting_get --app=$app --key=admin)
+final_path=$(ynh_app_setting_get --app=$app --key=final_path)
+language=$(ynh_app_setting_get --app=$app --key=language)
+db_name=$(ynh_app_setting_get --app=$app --key=db_name)
 
-sudo chown -R www-data: $final_path
+#=================================================
+# CHECK VERSION
+#=================================================
+ynh_script_progression --message="Checking version..."
 
-sed -i "s@PATHTOCHANGE@$path@g" ../conf/nginx.conf
-if [[ "$path" == "/" ]]; then
-    sed -i "s@ALIASTOCHANGE@root $final_path@g" ../conf/nginx.conf
-else
-    sed -i "s@ALIASTOCHANGE@alias $final_path@g" ../conf/nginx.conf
+upgrade_type=$(ynh_check_app_version_changed)
+
+#=================================================
+# BACKUP BEFORE UPGRADE THEN ACTIVE TRAP
+#=================================================
+ynh_script_progression --message="Backing up the app before upgrading (may take a while)..."
+
+# Backup the current version of the app
+ynh_backup_before_upgrade
+ynh_clean_setup () {
+	ynh_clean_check_starting
+	# Restore it if the upgrade fails
+	ynh_restore_upgradebackup
+}
+# Exit if an error occurs during the execution of the script
+ynh_abort_if_errors
+
+#=================================================
+# STANDARD UPGRADE STEPS
+#=================================================
+# STOP SYSTEMD SERVICE
+#=================================================
+ynh_script_progression --message="Stopping a systemd service..."
+
+ynh_systemd_action --service_name=$app --action="stop" --log_path="$datadir/DATA/LOG/yacy00.log"
+
+#=================================================
+# ENSURE DOWNWARD COMPATIBILITY
+#=================================================
+ynh_script_progression --message="Ensuring downward compatibility..."
+
+# Cleaning legacy permissions
+if ynh_legacy_permissions_exists; then
+	ynh_legacy_permissions_delete_all
+
+	ynh_app_setting_delete --app=$app --key=is_public
 fi
-sudo cp ../conf/nginx.conf /etc/nginx/conf.d/$domain.d/yacy.conf
 
-sudo service nginx reload
-sudo yunohost app ssowatconf
+#=================================================
+# CREATE DEDICATED USER
+#=================================================
+ynh_script_progression --message="Making sure dedicated system user exists..."
+
+# Create a dedicated user (if not existing)
+ynh_system_user_create --username=$app --home_dir="$final_path"
+
+#=================================================
+# DOWNLOAD, CHECK AND UNPACK SOURCE
+#=================================================
+
+if [ "$upgrade_type" == "UPGRADE_APP" ]
+then
+	ynh_script_progression --message="Upgrading source files..."
+
+	# Download, check integrity, uncompress and patch the source from app.src
+	ynh_setup_source --dest_dir="$final_path"
+fi
+
+chmod 750 "$final_path"
+chmod -R o-rwx "$final_path"
+chown -R $app:www-data "$final_path"
+
+#=================================================
+# NGINX CONFIGURATION
+#=================================================
+ynh_script_progression --message="Upgrading NGINX web server configuration..."
+
+# Create a dedicated NGINX config
+ynh_add_nginx_config
+
+#=================================================
+# UPGRADE DEPENDENCIES
+#=================================================
+ynh_script_progression --message="Upgrading dependencies..."
+
+ynh_install_app_dependencies $pkg_dependencies
+
+#=================================================
+# SPECIFIC UPGRADE
+#=================================================
+# ...
+#=================================================
+
+#=================================================
+# UPDATE A CONFIG FILE
+#=================================================
+ynh_script_progression --message="Updating a configuration file..."
+
+ynh_replace_string --match_string="promoteSearchPageGreeting.homepage=https://yacy.net" --replace_string="promoteSearchPageGreeting.homepage=https://$domain$path_url" --target_file="$datadir/DATA/SETTINGS/yacy.conf"
+
+#=================================================
+# SETUP SYSTEMD
+#=================================================
+ynh_script_progression --message="Upgrading systemd configuration..."
+
+# Create a dedicated systemd config
+ynh_add_systemd_config
+
+#=================================================
+# GENERIC FINALIZATION
+#=================================================
+# INTEGRATE SERVICE IN YUNOHOST
+#=================================================
+ynh_script_progression --message="Integrating service in YunoHost..."
+
+yunohost service add $app --log="$datadir/DATA/LOG/yacy00.log"
+
+#=================================================
+# START SYSTEMD SERVICE
+#=================================================
+ynh_script_progression --message="Starting a systemd service..."
+
+ynh_systemd_action --service_name=$app --action="start" --log_path="$datadir/DATA/LOG/yacy00.log" --line_match="Started httpd:"
+
+#=================================================
+# RELOAD NGINX
+#=================================================
+ynh_script_progression --message="Reloading NGINX web server..."
+
+ynh_systemd_action --service_name=nginx --action=reload
+
+#=================================================
+# END OF SCRIPT
+#=================================================
+
+ynh_script_progression --message="Upgrade of $app completed"
