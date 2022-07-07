@@ -9,11 +9,11 @@
     "version": "1.924~ynh1",
     "url": "https://yacy.net/",
     "upstream": {
-        "license": "free",
+        "license": "GPL-2.0-or-later",
         "website": "https://yacy.net/",
         "code": "https://github.com/yacy/yacy_search_server"
     },
-    "license": "free",
+    "license": "GPL-2.0-or-later",
     "maintainer": {
         "name": "Moul",
         "email": "moul@moul.re",
