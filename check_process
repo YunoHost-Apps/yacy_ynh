@@ -2,6 +2,7 @@
 	; Manifest
 		domain="domain.tld"
 		path="/path"
+		password="1Strong-Password"
 	; Checks
 		pkg_linter=1
 		setup_sub_dir=1
@@ -10,7 +11,8 @@
 		setup_private=0
 		setup_public=0
 		upgrade=1
-		#upgrade=1	from_commit=CommitHash
+		# 1.0~ynh1
+		upgrade=1	from_commit=ca4d54e5e6c1bc7d772e375f6193b46f886034a5
 		backup_restore=1
 		multi_instance=0
 		port_already_use=0
@@ -18,6 +20,3 @@
 ;;; Options
 Email=
 Notification=none
-;;; Upgrade options
-	; commit=CommitHash
-		name=Name and date of the commit.
