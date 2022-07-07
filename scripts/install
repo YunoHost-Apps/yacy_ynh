@@ -25,7 +25,7 @@ ynh_abort_if_errors
 
 domain=$YNH_APP_ARG_DOMAIN
 path_url=$YNH_APP_ARG_PATH
-password=$YNH_APP_ARG_PASSWORD
+password="$YNH_APP_ARG_PASSWORD"
 
 app=$YNH_APP_INSTANCE_NAME
 
@@ -126,7 +126,7 @@ ynh_script_progression --message="Configuring Yacy..."
 
 ynh_systemd_action --service_name=$app --action="start" --log_path="$datadir/DATA/LOG/yacy00.log" --line_match="Started httpd:"
 
-ynh_exec_as $app YACY_DATA_PATH=$datadir/DATA $final_path/bin/passwd.sh $password
+ynh_exec_as $app YACY_DATA_PATH=$datadir/DATA $final_path/bin/passwd.sh "$password"
 
 ynh_systemd_action --service_name=$app --action="stop" --log_path="$datadir/DATA/LOG/yacy00.log"
 
