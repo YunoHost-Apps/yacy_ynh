@@ -13,79 +13,79 @@ source /usr/share/yunohost/helpers
 # MANAGE SCRIPT FAILURE
 #=================================================
 
-ynh_clean_setup () {
+#REMOVEME? ynh_clean_setup () {
 	ynh_clean_check_starting
 }
 # Exit if an error occurs during the execution of the script
-ynh_abort_if_errors
+#REMOVEME? ynh_abort_if_errors
 
 #=================================================
 # RETRIEVE ARGUMENTS FROM THE MANIFEST
 #=================================================
 
-domain=$YNH_APP_ARG_DOMAIN
-path_url=$YNH_APP_ARG_PATH
-password="$YNH_APP_ARG_PASSWORD"
+#REMOVEME? domain=$YNH_APP_ARG_DOMAIN
+#REMOVEME? path=$YNH_APP_ARG_PATH
+#REMOVEME? password="$YNH_APP_ARG_PASSWORD"
 
-app=$YNH_APP_INSTANCE_NAME
+#REMOVEME? app=$YNH_APP_INSTANCE_NAME
 
 #=================================================
 # CHECK IF THE APP CAN BE INSTALLED WITH THESE ARGS
 #=================================================
-ynh_script_progression --message="Validating installation parameters..."
+#REMOVEME? ynh_script_progression --message="Validating installation parameters..."
 
-final_path=/var/www/$app
-test ! -e "$final_path" || ynh_die --message="This path already contains a folder"
+#REMOVEME? install_dir=/var/www/$app
+#REMOVEME? test ! -e "$install_dir" || ynh_die --message="This path already contains a folder"
 
 # Register (book) web path
-ynh_webpath_register --app=$app --domain=$domain --path_url=$path_url
+#REMOVEME? ynh_webpath_register --app=$app --domain=$domain --path=$path
 
 #=================================================
 # STORE SETTINGS FROM MANIFEST
 #=================================================
-ynh_script_progression --message="Storing installation settings..."
+#REMOVEME? ynh_script_progression --message="Storing installation settings..."
 
-ynh_app_setting_set --app=$app --key=domain --value=$domain
-ynh_app_setting_set --app=$app --key=path --value=$path_url
+#REMOVEME? ynh_app_setting_set --app=$app --key=domain --value=$domain
+#REMOVEME? ynh_app_setting_set --app=$app --key=path --value=$path
 
 #=================================================
 # STANDARD MODIFICATIONS
 #=================================================
 # FIND AND OPEN A PORT
 #=================================================
-ynh_script_progression --message="Finding an available port..."
+#REMOVEME? ynh_script_progression --message="Finding an available port..."
 
 # Find an available port
 port=8090
-ynh_app_setting_set --app=$app --key=port --value=$port
+#REMOVEME? ynh_app_setting_set --app=$app --key=port --value=$port
 
 #=================================================
 # INSTALL DEPENDENCIES
 #=================================================
-ynh_script_progression --message="Installing dependencies..."
+#REMOVEME? ynh_script_progression --message="Installing dependencies..."
 
-ynh_install_app_dependencies $pkg_dependencies
+#REMOVEME? ynh_install_app_dependencies $pkg_dependencies
 
 #=================================================
 # CREATE DEDICATED USER
 #=================================================
-ynh_script_progression --message="Configuring system user..."
+#REMOVEME? ynh_script_progression --message="Configuring system user..."
 
 # Create a system user
-ynh_system_user_create --username=$app --home_dir="$final_path"
+#REMOVEME? ynh_system_user_create --username=$app --home_dir="$install_dir"
 
 #=================================================
 # DOWNLOAD, CHECK AND UNPACK SOURCE
 #=================================================
 ynh_script_progression --message="Setting up source files..."
 
-ynh_app_setting_set --app=$app --key=final_path --value=$final_path
+#REMOVEME? ynh_app_setting_set --app=$app --key=install_dir --value=$install_dir
 # Download, check integrity, uncompress and patch the source from app.src
-ynh_setup_source --dest_dir="$final_path"
+ynh_setup_source --dest_dir="$install_dir"
 
-chmod 750 "$final_path"
-chmod -R o-rwx "$final_path"
-chown -R $app:www-data "$final_path"
+chmod 750 "$install_dir"
+chmod -R o-rwx "$install_dir"
+chown -R $app:www-data "$install_dir"
 
 #=================================================
 # NGINX CONFIGURATION
@@ -102,14 +102,14 @@ ynh_add_nginx_config
 #=================================================
 ynh_script_progression --message="Creating a data directory..."
 
-datadir=/home/yunohost.app/$app
-ynh_app_setting_set --app=$app --key=datadir --value=$datadir
+#REMOVEME? data_dir=/home/yunohost.app/$app
+#REMOVEME? ynh_app_setting_set --app=$app --key=data_dir --value=$data_dir
 
-mkdir -p $datadir
+mkdir -p $data_dir
 
-chmod 750 "$datadir"
-chmod -R o-rwx "$datadir"
-chown -R $app:www-data "$datadir"
+chmod 750 "$data_dir"
+chmod -R o-rwx "$data_dir"
+chown -R $app:www-data "$data_dir"
 
 #=================================================
 # SETUP SYSTEMD
@@ -124,18 +124,18 @@ ynh_add_systemd_config
 #=================================================
 ynh_script_progression --message="Configuring Yacy..."
 
-ynh_systemd_action --service_name=$app --action="start" --log_path="$datadir/DATA/LOG/yacy00.log" --line_match="Started httpd:"
+ynh_systemd_action --service_name=$app --action="start" --log_path="$data_dir/DATA/LOG/yacy00.log" --line_match="Started httpd:"
 
-ynh_exec_as $app YACY_DATA_PATH=$datadir/DATA $final_path/bin/passwd.sh "$password"
+ynh_exec_as $app YACY_DATA_PATH=$data_dir/DATA $install_dir/bin/passwd.sh "$password"
 
-ynh_systemd_action --service_name=$app --action="stop" --log_path="$datadir/DATA/LOG/yacy00.log"
+ynh_systemd_action --service_name=$app --action="stop" --log_path="$data_dir/DATA/LOG/yacy00.log"
 
 #=================================================
 # ADD A CONFIGURATION
 #=================================================
 ynh_script_progression --message="Adding a configuration file..."
 
-ynh_replace_string --match_string="promoteSearchPageGreeting.homepage=https://yacy.net" --replace_string="promoteSearchPageGreeting.homepage=https://$domain$path_url" --target_file="$datadir/DATA/SETTINGS/yacy.conf"
+ynh_replace_string --match_string="promoteSearchPageGreeting.homepage=https://yacy.net" --replace_string="promoteSearchPageGreeting.homepage=https://$domain$path" --target_file="$data_dir/DATA/SETTINGS/yacy.conf"
 
 #=================================================
 # GENERIC FINALIZATION
@@ -144,7 +144,7 @@ ynh_replace_string --match_string="promoteSearchPageGreeting.homepage=https://ya
 #=================================================
 ynh_script_progression --message="Integrating service in YunoHost..."
 
-yunohost service add $app --log="$datadir/DATA/LOG/yacy00.log"
+yunohost service add $app --log="$data_dir/DATA/LOG/yacy00.log"
 
 #=================================================
 # START SYSTEMD SERVICE
@@ -152,23 +152,23 @@ yunohost service add $app --log="$datadir/DATA/LOG/yacy00.log"
 ynh_script_progression --message="Starting a systemd service..."
 
 # Start a systemd service
-ynh_systemd_action --service_name=$app --action="start" --log_path="$datadir/DATA/LOG/yacy00.log" --line_match="Started httpd:"
+ynh_systemd_action --service_name=$app --action="start" --log_path="$data_dir/DATA/LOG/yacy00.log" --line_match="Started httpd:"
 
 #=================================================
 # SETUP SSOWAT
 #=================================================
-ynh_script_progression --message="Configuring permissions..."
+#REMOVEME? ynh_script_progression --message="Configuring permissions..."
 
 # Everyone can access the app.
 # The "main" permission is automatically created before the install script.
-ynh_permission_update --permission="main" --add="visitors"
+#REMOVEME? ynh_permission_update --permission="main" --add="visitors"
 
 #=================================================
 # RELOAD NGINX
 #=================================================
-ynh_script_progression --message="Reloading NGINX web server..."
+#REMOVEME? ynh_script_progression --message="Reloading NGINX web server..."
 
-ynh_systemd_action --service_name=nginx --action=reload
+#REMOVEME? ynh_systemd_action --service_name=nginx --action=reload
 
 #=================================================
 # END OF SCRIPT
