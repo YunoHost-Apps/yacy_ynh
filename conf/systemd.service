@@ -1,5 +1,5 @@
 [Unit]
-Description=YaCy search server
+Description=YaCy: search server
 After=network.target
 
 [Service]
