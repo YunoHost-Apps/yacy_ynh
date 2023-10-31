@@ -5,7 +5,8 @@ It shall NOT be edited by hand.
 
 # YaCy for YunoHost
 
-[![Integration level](https://dash.yunohost.org/integration/yacy.svg)](https://dash.yunohost.org/appci/app/yacy) ![Working status](https://ci-apps.yunohost.org/ci/badges/yacy.status.svg) ![Maintenance status](https://ci-apps.yunohost.org/ci/badges/yacy.maintain.svg)  
+[![Integration level](https://dash.yunohost.org/integration/yacy.svg)](https://dash.yunohost.org/appci/app/yacy) ![Working status](https://ci-apps.yunohost.org/ci/badges/yacy.status.svg) ![Maintenance status](https://ci-apps.yunohost.org/ci/badges/yacy.maintain.svg)
+
 [![Install YaCy with YunoHost](https://install-app.yunohost.org/install-with-yunohost.svg)](https://install-app.yunohost.org/?app=yacy)
 
 *[Lire ce readme en français.](./README_fr.md)*
@@ -36,7 +37,7 @@ sudo -u yacy YACY_DATA_PATH=/home/yunohost.app/yacy/DATA /var/www/yacy/bin/passw
 
 * Official app website: <https://yacy.net/>
 * Upstream app code repository: <https://github.com/yacy/yacy_search_server>
-* YunoHost documentation for this app: <https://yunohost.org/app_yacy>
+* YunoHost Store: <https://apps.yunohost.org/app/yacy>
 * Report a bug: <https://github.com/YunoHost-Apps/yacy_ynh/issues>
 
 ## Developer info
