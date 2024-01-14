@@ -1,0 +1,72 @@
+#:schema https://raw.githubusercontent.com/YunoHost/apps/master/schemas/manifest.v2.schema.json
+
+packaging_format = 2
+
+id = "yacy"
+name = "YaCy"
+description.en = "Free and decentralized search engine"
+description.fr = "Moteur de recherche libre et décentralisé"
+
+version = "1.924~ynh2"
+
+maintainers = ["Moul"]
+
+[upstream]
+license = "GPL-2.0-or-later"
+website = "https://yacy.net/"
+code = "https://github.com/yacy/yacy_search_server"
+
+[integration]
+yunohost = ">= 11.2"
+architectures = "all"
+multi_instance = false
+ldap = "not_relevant"
+sso = "not_relevant"
+disk = "150M"
+ram.build = "500M"
+ram.runtime = "590M"
+
+[install]
+    [install.domain]
+    # this is a generic question - ask strings are automatically handled by Yunohost's core
+    type = "domain"
+
+    [install.path]
+    # this is a generic question - ask strings are automatically handled by Yunohost's core
+    type = "path"
+    default = "/yacy"
+
+    [install.init_main_permission]
+    type = "group"
+    default = "visitors"
+
+    [install.password]
+    # this is a generic question - ask strings are automatically handled by Yunohost's core
+    help.en = "Choose an administrator password."
+    help.fr = "Choisissez un mot de passe d'administration."
+    type = "password"
+
+[resources]
+    [resources.sources.main]
+    url = "https://download.yacy.net/yacy_v1.924_20210209_10069.tar.gz"
+    sha256 = "18b88ed77a1dac71182fb84f2ac306c6c9d282fe074d78068f6f2bbec48d1757"
+
+    autoupdate.strategy = "latest_github_tag"
+    autoupdate.asset = "tarball"
+
+    [resources.system_user]
+
+    [resources.install_dir]
+
+    [resources.data_dir]
+
+    [resources.permissions]
+    main.url = "/"
+
+    [resources.ports]
+    main.default = 8090
+
+    [resources.apt]
+    packages = [
+        "openjdk-11-jre-headless"
+    ]
