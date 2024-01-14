@@ -7,7 +7,7 @@ name = "YaCy"
 description.en = "Free and decentralized search engine"
 description.fr = "Moteur de recherche libre et décentralisé"
 
-version = "1.924~ynh1"
+version = "1.924~ynh2"
 
 maintainers = ["Moul"]
 
