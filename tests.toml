@@ -1,0 +1,9 @@
+test_format = 1.0
+
+[default]
+
+    # ------------
+    # Tests to run
+    # ------------
+
+    test_upgrade_from.ca4d54e5e6c1bc7d772e375f6193b46f886034a5.name = "1.0~ynh1"
