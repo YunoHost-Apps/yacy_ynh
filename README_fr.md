@@ -16,7 +16,8 @@ Si vous n’avez pas YunoHost, regardez [ici](https://yunohost.org/#/install) po
 
 ## Vue d’ensemble
 
-The YaCy search engine software provides results from a network of independent peers, instead of a central server. It is a distributed network where no single entity decides what to list or order it appears in.
+The YaCy search engine software provides results from a network of independent peers, instead of a central server.
+It is a distributed network where no single entity decides what to list or order it appears in.
 
 
 **Version incluse :** 1.924~ynh1
@@ -24,14 +25,6 @@ The YaCy search engine software provides results from a network of independent p
 ## Captures d’écran
 
 ![Capture d’écran de YaCy](./doc/screenshots/screenshot01.png)
-
-## Avertissements / informations importantes
-
-You can reset the Yacy administration password from the commande line using:
-
-```
-sudo -u yacy YACY_DATA_PATH=/home/yunohost.app/yacy/DATA /var/www/yacy/bin/passwd.sh youpassword
-```
 
 ## Documentations et ressources
 
