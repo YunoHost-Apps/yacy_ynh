@@ -68,5 +68,10 @@ ram.runtime = "590M"
 
     [resources.apt]
     packages = [
-        "openjdk-11-jre-headless"
-    ]
+    packages_from_raw_bash = """
+    if [[ $YNH_DEBIAN_VERSION == "bullseye" ]]; then
+        echo "openjdk-11-jre";
+    elif [[ $YNH_DEBIAN_VERSION == "bookworm" ]]; then
+        echo "openjdk-17-jre";
+    fi
+    """]
