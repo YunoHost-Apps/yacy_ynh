@@ -3,7 +3,7 @@
 请勿手动编辑。
 -->
 
-# YunoHost 的 YaCy
+# YunoHost 上的 YaCy
 
 [![集成程度](https://dash.yunohost.org/integration/yacy.svg)](https://dash.yunohost.org/appci/app/yacy) ![工作状态](https://ci-apps.yunohost.org/ci/badges/yacy.status.svg) ![维护状态](https://ci-apps.yunohost.org/ci/badges/yacy.maintain.svg)
 
