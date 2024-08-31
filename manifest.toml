@@ -17,7 +17,8 @@ website = "https://yacy.net/"
 code = "https://github.com/yacy/yacy_search_server"
 
 [integration]
-yunohost = ">= 11.2"
+yunohost = ">= 11.2.18"
+helpers_version = "2.1"
 architectures = "all"
 multi_instance = false
 ldap = "not_relevant"
