@@ -1,35 +1,28 @@
 #!/bin/bash
 
-#=================================================
-# GENERIC START
-#=================================================
-# IMPORT GENERIC HELPERS
-#=================================================
-
 source _common.sh
 source /usr/share/yunohost/helpers
 
 #=================================================
 # DOWNLOAD, CHECK AND UNPACK SOURCE
 #=================================================
-ynh_script_progression --message="Setting up source files..."
+ynh_script_progression "Setting up source files..."
 
 # Download, check integrity, uncompress and patch the source from app.src
 ynh_setup_source --dest_dir="$install_dir"
 
-chmod -R o-rwx "$install_dir"
-chown -R "$app:www-data" "$install_dir"
-
+#REMOVEME? Assuming the install dir is setup using ynh_setup_source, the proper chmod/chowns are now already applied and it shouldn't be necessary to tweak perms | chmod -R o-rwx "$install_dir"
+#REMOVEME? Assuming the install dir is setup using ynh_setup_source, the proper chmod/chowns are now already applied and it shouldn't be necessary to tweak perms | chown -R "$app:www-data" "$install_dir"
 #=================================================
 # SYSTEM CONFIGURATION
 #=================================================
-ynh_script_progression --message="Adding system configurations related to $app..." --weight=1
+ynh_script_progression "Adding system configurations related to $app..."
 
 # Create a dedicated NGINX config
-ynh_add_nginx_config
+ynh_config_add_nginx
 
 # Create a dedicated systemd config
-ynh_add_systemd_config
+ynh_config_add_systemd
 yunohost service add "$app" --log="$data_dir/DATA/LOG/yacy00.log"
 
 #=================================================
@@ -37,28 +30,28 @@ yunohost service add "$app" --log="$data_dir/DATA/LOG/yacy00.log"
 #=================================================
 # CONFIGURE YACY
 #=================================================
-ynh_script_progression --message="Configuring Yacy..."
+ynh_script_progression "Configuring Yacy..."
 
-ynh_systemd_action --service_name="$app" --action="start" --log_path="$data_dir/DATA/LOG/yacy00.log" --line_match="Started httpd:"
+ynh_systemctl --service="$app" --action="start" --log_path="$data_dir/DATA/LOG/yacy00.log" --wait_until="Started httpd:"
 
-ynh_exec_as "$app" YACY_DATA_PATH="$data_dir/DATA" "$install_dir/bin/passwd.sh" "$password"
+ynh_exec_as_app YACY_DATA_PATH="$data_dir/DATA" "$install_dir/bin/passwd.sh" "$password"
 
-ynh_systemd_action --service_name="$app" --action="stop" --log_path="$data_dir/DATA/LOG/yacy00.log"
+ynh_systemctl --service="$app" --action="stop" --log_path="$data_dir/DATA/LOG/yacy00.log"
 
-ynh_replace_string --target_file="$data_dir/DATA/SETTINGS/yacy.conf" \
-    --match_string="promoteSearchPageGreeting.homepage=https://yacy.net" \
-    --replace_string="promoteSearchPageGreeting.homepage=https://$domain$path"
+ynh_replace --file="$data_dir/DATA/SETTINGS/yacy.conf" \
+    --match="promoteSearchPageGreeting.homepage=https://yacy.net" \
+    --replace="promoteSearchPageGreeting.homepage=https://$domain$path"
 
 #=================================================
 # START SYSTEMD SERVICE
 #=================================================
-ynh_script_progression --message="Starting a systemd service..."
+ynh_script_progression "Starting $app's systemd service..."
 
 # Start a systemd service
-ynh_systemd_action --service_name="$app" --action="start" --log_path="$data_dir/DATA/LOG/yacy00.log" --line_match="Started httpd:"
+ynh_systemctl --service="$app" --action="start" --log_path="$data_dir/DATA/LOG/yacy00.log" --wait_until="Started httpd:"
 
 #=================================================
 # END OF SCRIPT
 #=================================================
 
-ynh_script_progression --message="Installation of $app completed"
+ynh_script_progression "Installation of $app completed"
