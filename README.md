@@ -5,7 +5,7 @@ It shall NOT be edited by hand.
 
 # YaCy for YunoHost
 
-[![Integration level](https://dash.yunohost.org/integration/yacy.svg)](https://dash.yunohost.org/appci/app/yacy) ![Working status](https://ci-apps.yunohost.org/ci/badges/yacy.status.svg) ![Maintenance status](https://ci-apps.yunohost.org/ci/badges/yacy.maintain.svg)
+[![Integration level](https://dash.yunohost.org/integration/yacy.svg)](https://ci-apps.yunohost.org/ci/apps/yacy/) ![Working status](https://ci-apps.yunohost.org/ci/badges/yacy.status.svg) ![Maintenance status](https://ci-apps.yunohost.org/ci/badges/yacy.maintain.svg)
 
 [![Install YaCy with YunoHost](https://install-app.yunohost.org/install-with-yunohost.svg)](https://install-app.yunohost.org/?app=yacy)
 

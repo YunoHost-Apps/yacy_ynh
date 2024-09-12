@@ -5,7 +5,7 @@ No se debe editar a mano.
 
 # YaCy para Yunohost
 
-[![Nivel de integración](https://dash.yunohost.org/integration/yacy.svg)](https://dash.yunohost.org/appci/app/yacy) ![Estado funcional](https://ci-apps.yunohost.org/ci/badges/yacy.status.svg) ![Estado En Mantención](https://ci-apps.yunohost.org/ci/badges/yacy.maintain.svg)
+[![Nivel de integración](https://dash.yunohost.org/integration/yacy.svg)](https://ci-apps.yunohost.org/ci/apps/yacy/) ![Estado funcional](https://ci-apps.yunohost.org/ci/badges/yacy.status.svg) ![Estado En Mantención](https://ci-apps.yunohost.org/ci/badges/yacy.maintain.svg)
 
 [![Instalar YaCy con Yunhost](https://install-app.yunohost.org/install-with-yunohost.svg)](https://install-app.yunohost.org/?app=yacy)
 
@@ -35,7 +35,7 @@ It is a distributed network where no single entity decides what to list or order
 
 ## Información para desarrolladores
 
-Por favor enviar sus correcciones a la [`branch testing`](https://github.com/YunoHost-Apps/yacy_ynh/tree/testing
+Por favor enviar sus correcciones a la [rama `testing`](https://github.com/YunoHost-Apps/yacy_ynh/tree/testing).
 
 Para probar la rama `testing`, sigue asÍ:
 
