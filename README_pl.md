@@ -22,7 +22,7 @@ The YaCy search engine software provides results from a network of independent p
 It is a distributed network where no single entity decides what to list or order it appears in.
 
 
-**Dostarczona wersja:** 1.924~ynh2
+**Dostarczona wersja:** 1.924~ynh3
 
 ## Zrzuty ekranu
 
