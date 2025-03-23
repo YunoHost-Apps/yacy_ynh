@@ -5,7 +5,9 @@ It shall NOT be edited by hand.
 
 # YaCy for YunoHost
 
-[![Integration level](https://dash.yunohost.org/integration/yacy.svg)](https://ci-apps.yunohost.org/ci/apps/yacy/) ![Working status](https://ci-apps.yunohost.org/ci/badges/yacy.status.svg) ![Maintenance status](https://ci-apps.yunohost.org/ci/badges/yacy.maintain.svg)
+[![Integration level](https://apps.yunohost.org/badge/integration/yacy)](https://ci-apps.yunohost.org/ci/apps/yacy/)
+![Working status](https://apps.yunohost.org/badge/state/yacy)
+![Maintenance status](https://apps.yunohost.org/badge/maintained/yacy)
 
 [![Install YaCy with YunoHost](https://install-app.yunohost.org/install-with-yunohost.svg)](https://install-app.yunohost.org/?app=yacy)
 
@@ -20,7 +22,7 @@ The YaCy search engine software provides results from a network of independent p
 It is a distributed network where no single entity decides what to list or order it appears in.
 
 
-**Shipped version:** 1.924~ynh2
+**Shipped version:** 1.924~ynh3
 
 ## Screenshots
 

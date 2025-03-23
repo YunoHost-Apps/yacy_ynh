@@ -5,7 +5,9 @@ Ini TIDAK boleh diedit dengan tangan.
 
 # YaCy untuk YunoHost
 
-[![Tingkat integrasi](https://dash.yunohost.org/integration/yacy.svg)](https://ci-apps.yunohost.org/ci/apps/yacy/) ![Status kerja](https://ci-apps.yunohost.org/ci/badges/yacy.status.svg) ![Status pemeliharaan](https://ci-apps.yunohost.org/ci/badges/yacy.maintain.svg)
+[![Tingkat integrasi](https://apps.yunohost.org/badge/integration/yacy)](https://ci-apps.yunohost.org/ci/apps/yacy/)
+![Status kerja](https://apps.yunohost.org/badge/state/yacy)
+![Status pemeliharaan](https://apps.yunohost.org/badge/maintained/yacy)
 
 [![Pasang YaCy dengan YunoHost](https://install-app.yunohost.org/install-with-yunohost.svg)](https://install-app.yunohost.org/?app=yacy)
 
@@ -20,7 +22,7 @@ The YaCy search engine software provides results from a network of independent p
 It is a distributed network where no single entity decides what to list or order it appears in.
 
 
-**Versi terkirim:** 1.924~ynh2
+**Versi terkirim:** 1.924~ynh3
 
 ## Tangkapan Layar
 
