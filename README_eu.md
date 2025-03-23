@@ -5,7 +5,9 @@ EZ editatu eskuz.
 
 # YaCy YunoHost-erako
 
-[![Integrazio maila](https://dash.yunohost.org/integration/yacy.svg)](https://ci-apps.yunohost.org/ci/apps/yacy/) ![Funtzionamendu egoera](https://ci-apps.yunohost.org/ci/badges/yacy.status.svg) ![Mantentze egoera](https://ci-apps.yunohost.org/ci/badges/yacy.maintain.svg)
+[![Integrazio maila](https://apps.yunohost.org/badge/integration/yacy)](https://ci-apps.yunohost.org/ci/apps/yacy/)
+![Funtzionamendu egoera](https://apps.yunohost.org/badge/state/yacy)
+![Mantentze egoera](https://apps.yunohost.org/badge/maintained/yacy)
 
 [![Instalatu YaCy YunoHost-ekin](https://install-app.yunohost.org/install-with-yunohost.svg)](https://install-app.yunohost.org/?app=yacy)
 

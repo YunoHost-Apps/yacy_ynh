@@ -5,7 +5,9 @@
 
 # YunoHost 上的 YaCy
 
-[![集成程度](https://dash.yunohost.org/integration/yacy.svg)](https://ci-apps.yunohost.org/ci/apps/yacy/) ![工作状态](https://ci-apps.yunohost.org/ci/badges/yacy.status.svg) ![维护状态](https://ci-apps.yunohost.org/ci/badges/yacy.maintain.svg)
+[![集成程度](https://apps.yunohost.org/badge/integration/yacy)](https://ci-apps.yunohost.org/ci/apps/yacy/)
+![工作状态](https://apps.yunohost.org/badge/state/yacy)
+![维护状态](https://apps.yunohost.org/badge/maintained/yacy)
 
 [![使用 YunoHost 安装 YaCy](https://install-app.yunohost.org/install-with-yunohost.svg)](https://install-app.yunohost.org/?app=yacy)
 

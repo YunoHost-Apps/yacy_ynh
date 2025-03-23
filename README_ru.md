@@ -5,7 +5,9 @@
 
 # YaCy для YunoHost
 
-[![Уровень интеграции](https://dash.yunohost.org/integration/yacy.svg)](https://ci-apps.yunohost.org/ci/apps/yacy/) ![Состояние работы](https://ci-apps.yunohost.org/ci/badges/yacy.status.svg) ![Состояние сопровождения](https://ci-apps.yunohost.org/ci/badges/yacy.maintain.svg)
+[![Уровень интеграции](https://apps.yunohost.org/badge/integration/yacy)](https://ci-apps.yunohost.org/ci/apps/yacy/)
+![Состояние работы](https://apps.yunohost.org/badge/state/yacy)
+![Состояние сопровождения](https://apps.yunohost.org/badge/maintained/yacy)
 
 [![Установите YaCy с YunoHost](https://install-app.yunohost.org/install-with-yunohost.svg)](https://install-app.yunohost.org/?app=yacy)
 
