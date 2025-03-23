@@ -5,7 +5,9 @@ Hij mag NIET handmatig aangepast worden.
 
 # YaCy voor Yunohost
 
-[![Integratieniveau](https://dash.yunohost.org/integration/yacy.svg)](https://ci-apps.yunohost.org/ci/apps/yacy/) ![Mate van functioneren](https://ci-apps.yunohost.org/ci/badges/yacy.status.svg) ![Onderhoudsstatus](https://ci-apps.yunohost.org/ci/badges/yacy.maintain.svg)
+[![Integratieniveau](https://apps.yunohost.org/badge/integration/yacy)](https://ci-apps.yunohost.org/ci/apps/yacy/)
+![Mate van functioneren](https://apps.yunohost.org/badge/state/yacy)
+![Onderhoudsstatus](https://apps.yunohost.org/badge/maintained/yacy)
 
 [![YaCy met Yunohost installeren](https://install-app.yunohost.org/install-with-yunohost.svg)](https://install-app.yunohost.org/?app=yacy)
 
