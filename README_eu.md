@@ -5,7 +5,9 @@ EZ editatu eskuz.
 
 # YaCy YunoHost-erako
 
-[![Integrazio maila](https://dash.yunohost.org/integration/yacy.svg)](https://ci-apps.yunohost.org/ci/apps/yacy/) ![Funtzionamendu egoera](https://ci-apps.yunohost.org/ci/badges/yacy.status.svg) ![Mantentze egoera](https://ci-apps.yunohost.org/ci/badges/yacy.maintain.svg)
+[![Integrazio maila](https://apps.yunohost.org/badge/integration/yacy)](https://ci-apps.yunohost.org/ci/apps/yacy/)
+![Funtzionamendu egoera](https://apps.yunohost.org/badge/state/yacy)
+![Mantentze egoera](https://apps.yunohost.org/badge/maintained/yacy)
 
 [![Instalatu YaCy YunoHost-ekin](https://install-app.yunohost.org/install-with-yunohost.svg)](https://install-app.yunohost.org/?app=yacy)
 
@@ -20,7 +22,7 @@ The YaCy search engine software provides results from a network of independent p
 It is a distributed network where no single entity decides what to list or order it appears in.
 
 
-**Paketatutako bertsioa:** 1.924~ynh2
+**Paketatutako bertsioa:** 1.924~ynh3
 
 ## Pantaila-argazkiak
 
