@@ -6,7 +6,6 @@
 # IMPORT GENERIC HELPERS
 #=================================================
 
-source _common.sh
 source /usr/share/yunohost/helpers
 
 #=================================================
@@ -17,11 +16,6 @@ source /usr/share/yunohost/helpers
 ynh_script_progression --message="Stopping a systemd service..."
 
 ynh_systemd_action --service_name="$app" --action="stop" --log_path="$data_dir/DATA/LOG/yacy00.log"
-
-#=================================================
-# ENSURE DOWNWARD COMPATIBILITY
-#=================================================
-# ynh_script_progression --message="Ensuring downward compatibility..."
 
 #=================================================
 # DOWNLOAD, CHECK AND UNPACK SOURCE
