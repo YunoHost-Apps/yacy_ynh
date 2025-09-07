@@ -35,7 +35,7 @@ yunohost service add "$app" --log="$data_dir/DATA/LOG/yacy00.log"
 #=================================================
 ynh_script_progression "Reloading NGINX web server and $app's service..."
 
-ynh_systemctl --service="$app" --action="start" --log_path="$data_dir/DATA/LOG/yacy00.log" --wait_until="Started httpd:"
+ynh_systemctl --service="$app" --action="start" --log_path="$data_dir/DATA/LOG/yacy00.log" #--wait_until="Started httpd:"
 
 ynh_systemctl --service=nginx --action=reload
 
