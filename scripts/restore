@@ -6,7 +6,6 @@ source ../settings/scripts/_common.sh
 #=================================================
 # IMPORT GENERIC HELPERS
 #=================================================
-
 ynh_script_progression "Restoring the app main directory..."
 
 ynh_restore "$install_dir"
@@ -28,6 +27,7 @@ ynh_restore "/etc/nginx/conf.d/$domain.d/$app.conf"
 ynh_restore "/etc/systemd/system/$app.service"
 
 systemctl enable "$app.service" --quiet
+
 yunohost service add "$app" --log="$data_dir/DATA/LOG/yacy00.log"
 
 #=================================================

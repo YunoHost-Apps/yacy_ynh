@@ -31,11 +31,9 @@ ram.runtime = "590M"
 
 [install]
     [install.domain]
-    # this is a generic question - ask strings are automatically handled by Yunohost's core
     type = "domain"
 
     [install.path]
-    # this is a generic question - ask strings are automatically handled by Yunohost's core
     type = "path"
     default = "/yacy"
 
@@ -44,7 +42,6 @@ ram.runtime = "590M"
     default = "visitors"
 
     [install.password]
-    # this is a generic question - ask strings are automatically handled by Yunohost's core
     help.en = "Choose an administrator password."
     help.fr = "Choisissez un mot de passe d'administration."
     type = "password"
