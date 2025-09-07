@@ -7,7 +7,7 @@ name = "YaCy"
 description.en = "Free and decentralized search engine"
 description.fr = "Moteur de recherche libre et décentralisé"
 
-version = "1.924~ynh2"
+version = "1.924~ynh3"
 
 maintainers = ["Moul"]
 
@@ -17,12 +17,14 @@ website = "https://yacy.net/"
 code = "https://github.com/yacy/yacy_search_server"
 
 [integration]
-yunohost = ">= 11.2.18"
+yunohost = ">= 12.1.17"
 helpers_version = "2.1"
 architectures = "all"
 multi_instance = false
+
 ldap = "not_relevant"
 sso = "not_relevant"
+
 disk = "150M"
 ram.build = "500M"
 ram.runtime = "590M"
