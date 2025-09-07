@@ -7,7 +7,7 @@ name = "YaCy"
 description.en = "Free and decentralized search engine"
 description.fr = "Moteur de recherche libre et décentralisé"
 
-version = "1.924~ynh3"
+version = "1.940~ynh1"
 
 maintainers = ["Moul"]
 
@@ -48,8 +48,8 @@ ram.runtime = "590M"
 
 [resources]
     [resources.sources.main]
-    url = "https://download.yacy.net/yacy_v1.924_20210209_10069.tar.gz"
-    sha256 = "18b88ed77a1dac71182fb84f2ac306c6c9d282fe074d78068f6f2bbec48d1757"
+    url = "https://download.yacy.net/yacy_v1.940_202405270005_70454654f.tar.gz"
+    sha256 = "b607a7462ebc12cfd30c2ffb6b849339c8d31a928d3a35ddcf8865f58aa3d880"
 
     autoupdate.strategy = "latest_github_tag"
     autoupdate.asset = "tarball"
@@ -64,7 +64,7 @@ ram.runtime = "590M"
     main.url = "/"
 
     [resources.ports]
-    #main.default = 8090
+    main.default = 8090
 
     [resources.apt]
     packages_from_raw_bash = """
