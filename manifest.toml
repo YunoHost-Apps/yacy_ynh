@@ -64,7 +64,7 @@ ram.runtime = "590M"
     main.url = "/"
 
     [resources.ports]
-    main.default = 8090
+    #main.default = 8090
 
     [resources.apt]
     packages_from_raw_bash = """
