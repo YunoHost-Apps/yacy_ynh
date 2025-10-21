@@ -11,7 +11,7 @@ It shall NOT be edited by hand.
 Free and decentralized search engine
 
 [![🌐 Official app website](https://img.shields.io/badge/Official_app_website-darkgreen?style=for-the-badge)](https://yacy.net/)
-[![Version: 1.924~ynh3](https://img.shields.io/badge/Version-1.924~ynh3-rgb(18,138,11)?style=for-the-badge)](https://ci-apps.yunohost.org/ci/apps/yacy/)
+[![Version: 1.924~ynh4](https://img.shields.io/badge/Version-1.924~ynh4-rgb(18,138,11)?style=for-the-badge)](https://ci-apps.yunohost.org/ci/apps/yacy/)
 
 <div align="center">
 <a href="https://apps.yunohost.org/app/yacy"><img height="100px" src="https://github.com/YunoHost/yunohost-artwork/raw/refs/heads/main/badges/neopossum-badges/badge_more_info_on_the_appstore.svg"/></a>
